@@ -14,7 +14,8 @@ const bowlX = (k: Box) => Math.max(1, k.x - 8);
  * Washi s'avance derrière et fait un va-et-vient horizontal rapide, sans décoller du sol.
  */
 // Le coussin (11 px) déborde un peu sous l'avant de Washi ; l'amplitude suit sa taille, pour qu'on le voie toujours derrière.
-const cushionX = (k: Box) => k.x + Math.round(k.w / 12) - 10;
+// Les deux plus grands (≥ 15 px) ont le coussin bien devant eux, sur le corps.
+const cushionX = (k: Box) => k.x + Math.round(k.w / 12) - 10 + (k.w >= 15 ? 4 : 0);
 const CUSHION_Y = FLOOR - 7;
 function humpOffset(t: number, t0: number, t1: number, w: number): [number, number] {
   const near = -Math.max(1, Math.round(w / 8)), far = -Math.max(2, Math.round(w / 4));
