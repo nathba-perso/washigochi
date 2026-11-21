@@ -1,0 +1,416 @@
+{
+ "palette": {
+  "o": "#151116",
+  "f": "#34303a",
+  "l": "#f7f2ea",
+  "s": "#c97a3c",
+  "g": "#6a6470",
+  "e": "#4d9fdc",
+  "w": "#ffffff",
+  "n": "#0d0b0e",
+  "k": "#1b1b1b",
+  "p": "#f2a3a3",
+  "h": "#f1c7a0",
+  "H": "#9a6a4a",
+  "r": "#e0443e",
+  "R": "#8e1f1f",
+  "c": "#cf9a5c",
+  "C": "#8c6239",
+  "d": "#5b3a1e",
+  "b": "#5a8fd0",
+  "B": "#2f5a94",
+  "y": "#f5d742",
+  "x": "#ffffff",
+  "z": "#6f7fb5",
+  "m": "#7a7a8a",
+  "M": "#4a4a58",
+  "q": "#9be08a"
+ },
+ "kikou": {
+  "0": {
+   "base": {
+    "fps": 1,
+    "frames": [
+     [
+      ".ooo.",
+      "offfo",
+      "oeleo",
+      "olnlo",
+      ".ooo."
+     ]
+    ]
+   }
+  },
+  "1": {
+   "base": {
+    "fps": 1,
+    "frames": [
+     [
+      ".oo..oo.",
+      "offooffo",
+      "offllffo",
+      "oselleso",
+      "oslnnlso",
+      "offllffo",
+      ".osllso.",
+      "..oooo.."
+     ]
+    ]
+   }
+  },
+  "2": {
+   "base": {
+    "fps": 1,
+    "frames": [
+     [
+      ".oo....oo.",
+      "offooooffo",
+      "offsllsffo",
+      "ofsellesfo",
+      "ofslnnlsfo",
+      "offsllsffo",
+      ".ofllllfo.",
+      "offllllffo",
+      "osfllllfso",
+      ".olo..olo."
+     ]
+    ]
+   }
+  },
+  "3": {
+   "base": {
+    "fps": 1,
+    "frames": [
+     [
+      "..ooo.....ooo..",
+      ".offfooooofffo.",
+      ".offffflfffffo.",
+      "..offsslssffo..",
+      "..ofswelewsfo..",
+      "..ofsslllssfo..",
+      "..offslnlsffo..",
+      "...oflllllfo...",
+      "....oollloo....",
+      "...offllllffo..",
+      "..offllllllffoo",
+      "..offllllllffof",
+      "..offlllllffoo.",
+      "..osslslslsso..",
+      "..ooooooooooo.."
+     ]
+    ]
+   }
+  },
+  "4": {
+   "base": {
+    "fps": 1,
+    "frames": [
+     [
+      ".oo.....oo..............",
+      "offoooooffo.............",
+      "offsflfsffo.............",
+      "ofweslsewfo.............",
+      "osslllllssoooooooooo....",
+      "oslllnlllsfffffffffffo..",
+      ".olllllllofffffffffffffo",
+      "..ooooooollllffffffffoo.",
+      "..ollllllllllfffffffso..",
+      "...olllllllffffffffsso..",
+      "...osslssoooooossssso...",
+      "...oso.oso....oso.oso...",
+      "...oso.oso....oso.oso...",
+      "...olo.olo....olo.olo...",
+      "...ooo.ooo....ooo.ooo..."
+     ]
+    ]
+   }
+  }
+ },
+ "props": {
+  "main": {
+   "fps": 6,
+   "frames": [
+    [
+     ".qqqqq.",
+     "qhhhhhq",
+     "qhhhhhq",
+     "qhhhhhq",
+     "qhqhqhq",
+     "qhqhqhq",
+     ".q.q.q."
+    ],
+    [
+     ".qqqqq.",
+     "qhhhhhq",
+     "qhhhhhq",
+     ".qhhhq.",
+     "..qhq..",
+     "..qhq..",
+     "...q..."
+    ]
+   ],
+   "pal": {
+    "h": "#f2c9a0",
+    "q": "#a86b4a"
+   }
+  },
+  "doigt": {
+   "fps": 1,
+   "frames": [
+    [
+     ".......qqqq...",
+     "......qhhhhqBB",
+     "..qqqqqhqhhqbB",
+     ".qnhhhhhqhhqbB",
+     "..qqqqqqhhhqbB",
+     "......qhhhhqbB",
+     "......qqqhhqbB",
+     "......qhhhhqbB",
+     ".......qqqq.BB"
+    ]
+   ],
+   "pal": {
+    "q": "#a86b4a",
+    "h": "#f2c9a0",
+    "n": "#f7e3d0",
+    "b": "#5a8fd0",
+    "B": "#2f5a94"
+   }
+  },
+  "bol": {
+   "fps": 4,
+   "frames": [
+    [
+     "y.y.y.y",
+     "BbbbbbB",
+     ".BbbbB."
+    ],
+    [
+     ".......",
+     "BbbbbbB",
+     ".BbbbB."
+    ]
+   ]
+  },
+  "miette": {
+   "fps": 6,
+   "frames": [
+    [
+     "m"
+    ]
+   ],
+   "pal": {
+    "m": "#b5523b"
+   }
+  },
+  "bouche": {
+   "fps": 4,
+   "frames": [
+    [
+     ".RR.RR.",
+     "RPPPPPR",
+     ".RRRRR."
+    ],
+    [
+     "..RRR..",
+     ".RPPPR.",
+     "..RRR.."
+    ]
+   ],
+   "pal": {
+    "P": "#ff5fa2",
+    "R": "#d62828"
+   }
+  },
+  "coeur": {
+   "fps": 4,
+   "frames": [
+    [
+     ".r.r.",
+     "rrrrr",
+     "rrrrr",
+     ".rrr.",
+     "..r.."
+    ]
+   ]
+  },
+  "z": {
+   "fps": 4,
+   "frames": [
+    [
+     "zzz",
+     "..z",
+     ".z.",
+     "z..",
+     "zzz"
+    ]
+   ]
+  },
+  "nuage": {
+   "fps": 4,
+   "frames": [
+    [
+     ".MMM..",
+     "MmmmMM",
+     "MmmmmM",
+     ".MMMM."
+    ],
+    [
+     ".MMM..",
+     "MmmmMM",
+     "MmmmmM",
+     ".MMMM.",
+     "..z..z"
+    ]
+   ]
+  },
+  "colere": {
+   "fps": 4,
+   "frames": [
+    [
+     "r.r",
+     ".r.",
+     "r.r"
+    ],
+    [
+     "rr.",
+     "..r",
+     "rr."
+    ]
+   ]
+  },
+  "exclam": {
+   "fps": 4,
+   "frames": [
+    [
+     "r",
+     "r",
+     "r",
+     ".",
+     "r"
+    ]
+   ]
+  },
+  "croix": {
+   "fps": 4,
+   "frames": [
+    [
+     "R...R",
+     ".R.R.",
+     "..R..",
+     ".R.R.",
+     "R...R"
+    ]
+   ]
+  },
+  "bulle": {
+   "fps": 4,
+   "frames": [
+    [
+     ".oooooooo.",
+     "oxxxxxxxxo",
+     "oxxxxxxxxo",
+     "oxxxxxxxxo",
+     "oxxxxxxxxo",
+     "oxxxxxxxxo",
+     ".oooooooo.",
+     "...oxo....",
+     "....o....."
+    ]
+   ]
+  },
+  "carton": {
+   "fps": 4,
+   "frames": [
+    [
+     "CCCCCCCCCCCCCC..",
+     "CccccccccccccC..",
+     "CcdddddddddddCC.",
+     "CcdddddddddddcCC",
+     "CcdddddddddddccC",
+     "CcdddddddddddccC",
+     "CcdddddddddddccC",
+     "CcdddddddddddccC",
+     "CcdddddddddddcCC",
+     "CccccccccccccCC.",
+     "CCCCCCCCCCCCCC.."
+    ]
+   ]
+  },
+  "coussin": {
+   "fps": 1,
+   "frames": [
+    [
+     "Y.........Y",
+     ".PPPPPPPPP.",
+     ".PpppppppP.",
+     "PpqpppppppP",
+     "PpppppppppP",
+     ".PpppppppP.",
+     ".PPPPPPPPP.",
+     "Y.........Y"
+    ]
+   ],
+   "pal": {
+    "P": "#8e3b6e",
+    "p": "#e87aa0",
+    "q": "#f6b8cf",
+    "Y": "#f5d742"
+   }
+  },
+  "caca": {
+   "fps": 1,
+   "frames": [
+    [
+     "..d...",
+     ".dCd..",
+     ".dddd.",
+     "dCCCCd",
+     "dddddd"
+    ]
+   ],
+   "pal": {
+    "d": "#5b3a1e",
+    "C": "#8c6239"
+   }
+  },
+  "balai": {
+   "fps": 1,
+   "frames": [
+    [
+     "......H",
+     ".....H.",
+     "....H..",
+     "...H...",
+     "..H....",
+     ".rr....",
+     "yyyy...",
+     "yYyYy..",
+     "y.y.y.."
+    ]
+   ],
+   "pal": {
+    "H": "#9a6a4a",
+    "r": "#e0443e",
+    "y": "#f5d742",
+    "Y": "#c9a227"
+   }
+  },
+  "coeur_grand": {
+   "fps": 6,
+   "frames": [
+    [
+     ".HH.HH.",
+     "HHHHHHH",
+     "HHHHHHH",
+     ".HHHHH.",
+     "..HHH..",
+     "...H..."
+    ]
+   ],
+   "pal": {
+    "H": "#ff4d6d"
+   }
+  }
+ }
+}

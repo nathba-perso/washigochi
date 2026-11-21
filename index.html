@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Washigochi</title>
+  <meta name="description" content="Fais grandir Washi, ton chiot berger australien." />
+  <meta name="theme-color" content="#151116" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Washigochi" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <main id="app">
+    <header>
+      <h1>Washigochi</h1>
+      <button id="menu-btn" class="icon-btn" aria-label="Menu">☰</button>
+    </header>
+
+    <div id="stage-wrap"><canvas id="scene" aria-label="Washi"></canvas></div>
+    <p id="caption" aria-live="polite">&nbsp;</p>
+
+    <nav id="actions">
+      <button data-action="nourrir"><span class="ico"></span><span>Nourrir</span></button>
+      <button data-action="coussin"><span class="ico"></span><span>Coussin</span></button>
+      <button data-action="calin"><span class="ico"></span><span>Câlin</span></button>
+      <button data-action="bisou"><span class="ico"></span><span>Bisou</span></button>
+      <button data-action="nettoyer"><span class="ico"></span><span>Nettoyer</span></button>
+    </nav>
+
+    <div id="install" hidden>
+      <p id="install-text"></p>
+      <button id="install-go" hidden>Installer</button>
+      <button id="install-close" class="icon-btn" aria-label="Fermer">×</button>
+    </div>
+  </main>
+
+  <!-- fenêtres -->
+  <div id="end" class="overlay" hidden>
+    <div class="card">
+      <h2 id="end-title"></h2>
+      <p id="end-text"></p>
+      <button id="end-restart" class="primary">Recommencer</button>
+    </div>
+  </div>
+
+  <div id="dream" class="overlay" hidden>
+    <div class="card dream-card">
+      <p class="small">Washi te partage un rêve…</p>
+      <div class="thought"><img id="dream-img" alt="Un rêve de coussin" /></div>
+      <p id="dream-text" class="small"></p>
+      <p id="dream-credit" class="credit"></p>
+      <button id="dream-close" class="primary">Merci Washi</button>
+    </div>
+  </div>
+
+  <div id="menu" class="overlay" hidden>
+    <div class="card">
+      <h2>Menu</h2>
+      <button data-open="postbox">Cartes postales</button>
+      <button data-open="album">Album des rêves</button>
+      <button data-open="backup">Code de sauvegarde</button>
+      <button data-open="install-help">Installer sur le téléphone</button>
+      <button id="restart" class="danger">Recommencer une partie</button>
+      <button data-close class="ghost">Fermer</button>
+    </div>
+  </div>
+
+  <div id="album" class="overlay" hidden>
+    <div class="card">
+      <h2>Album des rêves</h2>
+      <p id="album-count" class="small"></p>
+      <div id="album-grid"></div>
+      <div id="album-credits"></div>
+      <button data-close class="ghost">Fermer</button>
+    </div>
+  </div>
+
+  <div id="postbox" class="overlay" hidden>
+    <div class="card">
+      <h2>Cartes postales</h2>
+      <div id="pseudo-box">
+        <p class="small">Comment tu t'appelles ? Ton Washi signera ses cartes « le Washi de … ».</p>
+        <input id="pseudo" maxlength="16" autocomplete="nickname" placeholder="Ton prénom ou pseudo" />
+      </div>
+      <p id="pseudo-line" class="small" hidden></p>
+      <button id="compose-open" class="primary">Envoyer une carte</button>
+      <p class="small">Tu as reçu une carte par message ? Touche son lien, ou colle-le ici :</p>
+      <textarea id="card-code" rows="2" placeholder="Lien de la carte"></textarea>
+      <button id="card-paste">Ouvrir la carte</button>
+      <p id="postbox-msg" class="small"></p>
+      <p id="cards-count" class="small"></p>
+      <div id="cards-grid"></div>
+      <button data-close class="ghost">Fermer</button>
+    </div>
+  </div>
+
+  <div id="compose" class="overlay" hidden>
+    <div class="card">
+      <h2>Ta carte</h2>
+      <canvas id="compose-preview" class="postcard"></canvas>
+      <p class="small">Décor</p>
+      <div id="decor-choice" class="chips"></div>
+      <p class="small">Message</p>
+      <select id="message-choice"></select>
+      <button id="compose-send" class="primary">Envoyer</button>
+      <p id="compose-msg" class="small"></p>
+      <button id="compose-back" class="ghost">Retour</button>
+    </div>
+  </div>
+
+  <div id="postcard" class="overlay" hidden>
+    <div class="card dream-card">
+      <p id="postcard-title" class="small"></p>
+      <canvas id="postcard-canvas" class="postcard"></canvas>
+      <p id="postcard-text" class="small"></p>
+      <button id="postcard-copy" hidden>Copier la carte</button>
+      <button id="postcard-close" class="primary">Merci !</button>
+    </div>
+  </div>
+
+  <div id="backup" class="overlay" hidden>
+    <div class="card">
+      <h2>Code de sauvegarde</h2>
+      <p class="small">Copie ce code et garde-le quelque part (notes, message à toi-même). Il permet de retrouver ton Washi sur un autre téléphone ou si le jeu a été effacé.</p>
+      <textarea id="backup-code" rows="4" readonly></textarea>
+      <button id="backup-copy">Copier le code</button>
+      <p class="small">Pour restaurer un Washi, colle son code ici :</p>
+      <textarea id="restore-code" rows="3" placeholder="WASHI1:…"></textarea>
+      <button id="restore-go">Restaurer ce Washi</button>
+      <p id="backup-msg" class="small"></p>
+      <button data-close class="ghost">Fermer</button>
+    </div>
+  </div>
+
+  <div id="install-help" class="overlay" hidden>
+    <div class="card">
+      <h2>Installer le jeu</h2>
+      <p class="small"><b>iPhone</b> : ouvre ce lien dans Safari, touche le bouton Partager (le carré avec une flèche), puis « Sur l'écran d'accueil ».</p>
+      <p class="small"><b>Android</b> : dans Chrome, menu ⋮ puis « Installer l'application » ou « Ajouter à l'écran d'accueil ».</p>
+      <p class="small">Une fois installé, ouvre toujours Washi depuis son icône : c'est là que sa sauvegarde est gardée.</p>
+      <button data-close class="ghost">Fermer</button>
+    </div>
+  </div>
+
+  <div id="confirm" class="overlay" hidden>
+    <div class="card">
+      <h2>Recommencer ?</h2>
+      <p class="small">Ton Washi actuel s'en ira pour toujours.</p>
+      <button id="confirm-yes" class="danger">Oui, recommencer</button>
+      <button data-close class="ghost">Non</button>
+    </div>
+  </div>
+
+  <div id="debug" hidden></div>
+
+  <script type="module" src="./src/main.ts"></script>
+</body>
+</html>

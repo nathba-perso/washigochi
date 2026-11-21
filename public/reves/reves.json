@@ -1,0 +1,30 @@
+{
+ "photos": [
+  "coussin-01.png",
+  "coussin-02.png",
+  "coussin-03.png",
+  "coussin-04.png",
+  "coussin-05.png",
+  "coussin-06.png",
+  "coussin-07.png",
+  "coussin-08.png",
+  "coussin-09.png",
+  "coussin-10.png",
+  "coussin-11.png",
+  "coussin-12.png"
+ ],
+ "titres": {
+  "coussin-01.png": "Le coussin rose à pompons",
+  "coussin-02.png": "Le coussin à rayures",
+  "coussin-03.png": "Le coussin cœur",
+  "coussin-04.png": "Le coussin à pois",
+  "coussin-05.png": "Le gros coussin rond",
+  "coussin-06.png": "Le coussin vichy",
+  "coussin-07.png": "Le coussin en os",
+  "coussin-08.png": "Le coussin lune",
+  "coussin-09.png": "Le coussin étoile",
+  "coussin-10.png": "Le traversin zigzag",
+  "coussin-11.png": "Le coussin patte de chien",
+  "coussin-12.png": "Le coussin du canapé"
+ }
+}
