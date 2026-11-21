@@ -10,8 +10,8 @@ règles, mêmes formats de sprites. Ce qui change :
 | Kikougochi | Washigochi |
 |---|---|
 | Le kikou, un bébé guépard | Washi, un berger australien noir tricolore (`tools/vendor/washi.py`) |
-| Pip (une main touche le nez) | **Coussin** : on donne un coussin à Washi, qui le serre entre ses pattes et fait des allers-retours très enthousiastes (mime comique, rien d'explicite) |
-| Rêves : photos de bébés guépards | Rêves : 12 coussins en pixel art (`tools/make_assets.py`) |
+| Pip (une main touche le nez) | **Coussin** : un coussin tombe au sol devant Washi, qui s'avance dessus et fait un va-et-vient horizontal très enthousiaste |
+| Rêves : photos de bébés guépards | Rêves : 12 photos libres de coussins (Wikimedia Commons, crédits dans `reves.json`) |
 
 Le coussin garde le rôle du pip dans les règles : il rend heureux, mais **excite** Washi et le fatigue un peu.
 Trop excité, il ne s'endort pas et s'agace. Quand il en a envie, une bulle montre un petit coussin.
@@ -36,8 +36,8 @@ Dans les réglages du dépôt, *Settings › Pages › Source* doit être sur **
 | `src/render/` | Scène canvas 48×40 agrandie sans lissage, planches de sprites, séquences (actions, réactions, arrivée, évolution, départ). Le coussin est dans `clips.ts`. |
 | `src/main.ts` | Boucle de jeu, sauvegarde, écrans (victoire, départ, rêve, album, code de sauvegarde, installation). |
 | `public/sprites/` | Planches PNG + `manifest.json`, générées depuis `tools/vendor/washi.py` et `tools/vendor/etats.py`. |
-| `public/reves/` | Les coussins rêvés et `reves.json` (noms de fichiers et titres). |
-| `tools/` | Scripts Python : sprites, planches, accessoires, icônes et coussins. |
+| `public/reves/` | Photos de coussins et `reves.json` (fichiers, auteur, licence, page source). |
+| `tools/` | Scripts Python : sprites, planches, accessoires, icônes, recherche de photos (`fetch_reves.py`). |
 
 Le code garde les noms internes du Kikougochi (`Kikou`, `kikouPose`…) pour rester facile à comparer avec lui.
 
@@ -46,11 +46,17 @@ Le code garde les noms internes du Kikougochi (`Kikou`, `kikouPose`…) pour res
 ```bash
 python3 tools/make_sprites.py    # sprites de base + accessoires (dont le coussin) -> src/sprites/sprites.json
 python3 tools/import_sheets.py   # planches d'états et de réactions -> public/sprites/
-python3 tools/make_assets.py     # icônes de l'app + coussins des rêves
+python3 tools/make_assets.py     # icônes de l'app
 ```
 
 Légende des grilles de `washi.py` : `o` contour, `f` pelage noir, `l` blanc, `s` feu, `e` œil bleu, `w` reflet,
 `n` truffe, `p` rose (langue).
+
+## Rêves
+
+Le workflow *Chercher des photos de coussins* (`.github/workflows/reves.yml`, lancé à la main) cherche des
+photos sous licence libre sur Wikimedia Commons et les pousse sur la branche `reves-candidats`. Les photos
+retenues sont copiées dans `public/reves/` et listées dans `reves.json` avec leurs crédits, affichés dans le jeu.
 
 ## Soins et propreté
 
