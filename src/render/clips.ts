@@ -10,16 +10,18 @@ const lerp = (a: number, b: number, p: number) => a + (b - a) * Math.max(0, Math
 const bowlX = (k: Box) => Math.max(1, k.x - 8);
 
 /**
- * Coussin donné à Washi : il reste posé au sol, devant lui (il regarde vers la gauche). Washi s'avance
- * dessus et fait un va-et-vient horizontal rapide, sans décoller du sol.
+ * Coussin donné à Washi : il reste posé au sol, au premier plan, devant lui (il regarde vers la gauche).
+ * Washi s'avance derrière et fait un va-et-vient horizontal rapide, sans décoller du sol.
  */
-const cushionX = (k: Box) => k.x - 8;
+// Le coussin (11 px) déborde un peu sous l'avant de Washi ; l'amplitude suit sa taille, pour qu'on le voie toujours derrière.
+const cushionX = (k: Box) => k.x + Math.round(k.w / 12) - 10;
 const CUSHION_Y = FLOOR - 7;
-function humpOffset(t: number, t0: number, t1: number): [number, number] {
+function humpOffset(t: number, t0: number, t1: number, w: number): [number, number] {
+  const near = -Math.max(1, Math.round(w / 8)), far = -Math.max(2, Math.round(w / 4));
   if (t < t0 - 300 || t > t1 + 300) return [0, 0];
-  if (t < t0) return [-Math.round(lerp(0, 5, (t - t0 + 300) / 300)), 0];        // il s'avance
-  if (t > t1) return [-Math.round(lerp(5, 0, (t - t1) / 300)), 0];             // il recule
-  return [Math.floor((t - t0) / 100) % 2 ? -3 : -6, 0];                         // va-et-vient
+  if (t < t0) return [Math.round(lerp(0, near, (t - t0 + 300) / 300)), 0];      // il s'avance
+  if (t > t1) return [Math.round(lerp(near, 0, (t - t1) / 300)), 0];            // il recule
+  return [Math.floor((t - t0) / 100) % 2 ? near : far, 0];                       // va-et-vient
 }
 function drawCushion(sc: Scene, t: number, base: Box, drop = 0) {
   sc.prop('coussin', cushionX(base), drop && t < drop ? Math.round(lerp(-9, CUSHION_Y, t / drop)) : CUSHION_Y);
@@ -60,9 +62,10 @@ export function actionClip(a: Action, idleAnim: string, stage: number, onKiss?: 
       const at = (k: Box) => (base ??= { ...k });
       return {
         dur: 3000, anim: 'calme', caption: 'Tu donnes un coussin à Washi',
-        offset: (t) => humpOffset(t, 800, 2600),
-        under: (sc, t, k) => drawCushion(sc, t, at(k), 500),
+        offset: (t) => (base ? humpOffset(t, 800, 2600, base.w) : [0, 0]),
+        under: (sc, t, k) => { at(k); },
         over: (sc, t, k) => {
+          drawCushion(sc, t, at(k), 500); // au premier plan : Washi bouge derrière
           if (t > 800 && t < 2600) {
             smallHeart(sc, t - 800, k, 900);
             if (Math.floor((t - 800) / 100) % 2) { sc.px(k.x + k.w + 1, k.y + Math.floor(k.h / 2), '#ffffff'); sc.px(k.x + k.w + 2, k.y + Math.floor(k.h / 2) + 1, '#ffffff'); }
@@ -129,9 +132,9 @@ export function reactionClip(r: Reaction): Clip {
     case 'amuse': { // il finit avec le coussin, puis fait le fier
       let base: Box | null = null;
       const at = (k: Box) => (base ??= { ...k });
-      c.dur = 1900; c.offset = (t) => humpOffset(t, 0, 900);
-      c.under = (sc, t, k) => { if (t < 1400) drawCushion(sc, t, at(k)); };
-      c.over = (sc, t, k) => { if (t > 1000) stars(sc, t, k); };
+      c.dur = 1900; c.offset = (t) => (base ? humpOffset(t, 0, 900, base.w) : [0, 0]);
+      c.under = (sc, t, k) => { at(k); };
+      c.over = (sc, t, k) => { if (t < 1400) drawCushion(sc, t, at(k)); if (t > 1000) stars(sc, t, k); };
       break;
     }
     case 'blotti': c.dur = 1800; c.offset = (t) => [0, t > 200 && t < 1500 ? 1 : 0]; c.over = (sc, t, k) => softWaves(sc, t, k); break;
